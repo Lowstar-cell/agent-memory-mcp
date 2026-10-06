@@ -1,0 +1,44 @@
+{
+  "//": "Alles hier hat einen brauchbaren Standardwert. Wer nichts aendert, bekommt einen laufenden Server. Die drei Stellen, an denen sich Aendern lohnt, sind mit ANPASSEN markiert.",
+
+  "lmstudio_base_url": "http://localhost:1234",
+
+  "//subagent_modell": "ANPASSEN. 'auto' nimmt das Modell, das gerade in LM Studio laeuft, und laedt nie etwas nach - das funktioniert immer, erbt aber die Geschwindigkeit deines Chatmodells. Ein Modellname laedt bei Bedarf nach, mit Rueckfall auf 'auto', wenn es den Namen nicht gibt.",
+  "//subagent_modell_gemessen": "Auf einer 7900 XTX gemessen: Mit einem 35B-A3B als Subagent dauerte EINE Modellrunde 266s, und LM Studios Engine brach nach gut 300s selbst ab - zwei Laeufe, beide gescheitert. Mit qwen3-4b: 71s, 4 Runden, 3 Werkzeugaufrufe, richtige Antwort. Subagenten lesen viel und denken wenig; dafuer ist ein 4B das passende Werkzeug, und dein Chatmodell bleibt unangetastet.",
+  "subagent_modell": "auto",
+
+  "//embed_modell": "Fuer die Bedeutungssuche in recall(). Fehlt das Modell, laeuft die Stichwortsuche allein weiter - der Server startet trotzdem. In LM Studio unter 'Search' ein beliebiges Embedding-Modell laden und den Namen hier eintragen.",
+  "embed_modell": "text-embedding-embeddinggemma-300m-qat",
+
+  "//subagent": "timeout_sekunden ist grosszuegig, weil ein Auftrag mindestens zwei Modellrunden braucht (Werkzeug holen, dann antworten). Ein Zeitlimit unter der doppelten Rundendauer kann nie aufgehen.",
+  "subagent": {
+    "max_runden": 8,
+    "max_gleichzeitig": 2,
+    "timeout_sekunden": 900,
+    "max_antwort_tokens": 1200,
+    "kontext_laenge": 16384
+  },
+
+  "//erlaubte_mcp_server": "ANPASSEN. Was ein SUBAGENT unbeaufsichtigt benutzen darf - er laeuft im Hintergrund, hier liest kein Mensch mit. Die Namen muessen genau so in deiner mcp.json stehen; unbekannte Namen werden still uebergangen.",
+  "//erlaubte_mcp_server_warum_kein_terminal": "Ein Server, der Befehle ausfuehrt, gehoert hier NICHT hinein, solange du ihm nicht ausdruecklich vertraust. Uebliche terminal-Server laufen mit ALLOWED_COMMANDS=all auf dem ganzen Laufwerk - ein 4B-Modell duerfte dann unbeaufsichtigt beliebige Befehle absetzen. Das Hauptmodell erreicht solche Server weiterhin ueber tool_call (siehe gateway_server); dort sitzt jemand davor, der mitliest.",
+  "erlaubte_mcp_server": ["web-search", "filesystem"],
+
+  "//gateway_server": "Was das HAUPTMODELL ueber tool_find/tool_call erreichen darf. 'alle' = alles aus mcp.json ausser diesem Server selbst. Weiter gefasst als die Subagenten-Freigabe, denn am Chat sitzt jemand, der mitliest. Alternativ eine Liste von Namen.",
+  "gateway_server": "alle",
+
+  "recall": {
+    "stichwort_gewicht": 0.5,
+    "bedeutung_gewicht": 0.5,
+    "top_k": 5
+  },
+
+  "verify": {
+    "standard_timeout": 120,
+    "ausgabe_tail_zeichen": 2000
+  },
+
+  "//pfade": "lmstudio_mcp_json leer lassen heisst: ~/.lmstudio/mcp.json, also der Standardort. wissensbasis ist optional (ANPASSEN oder leer lassen): ein Ordner mit wiki/ und skills/ darin wird mitdurchsucht und mit skill_find gefunden, aber NIE beschrieben.",
+  "pfade": {
+    "wissensbasis": ""
+  }
+}

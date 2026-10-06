@@ -1,0 +1,49 @@
+{
+  "id": "pb_20260810_153913_server_taucht_in_lm_studio_nicht_auf",
+  "kind": "playbook",
+  "title": "Server taucht in LM Studio nicht auf",
+  "trigger": "agent-memory steht in mcp.json, aber LM Studio zeigt keine Werkzeuge davon an",
+  "tags": [
+    "lm-studio",
+    "mcp.json",
+    "einrichtung"
+  ],
+  "context": "Fast immer der Pfad: LM Studio startet den Server als Kindprozess und sagt bei einem Fehlstart nichts Lautes. Der Eintrag verschwindet dann einfach aus der Werkzeugliste.",
+  "steps": [
+    {
+      "do": "In LM Studio unter Program > Install > Edit mcp.json pruefen, ob der Pfad hinter --directory wirklich existiert",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "Den Startbefehl von Hand im Terminal ausfuehren: uv --directory <PFAD> run server.py - er darf nicht sofort zurueckkehren",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "uv sync im Serverordner laufen lassen; ohne Abhaengigkeiten startet der Prozess und stirbt still",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "In LM Studio den Server aus- und wieder einschalten, damit er neu gestartet wird",
+      "cmd": null,
+      "why": null
+    }
+  ],
+  "verify": {
+    "command": "uv run python tests/stdio_check.py"
+  },
+  "pitfalls": [
+    "Rueckwaerts-Schraegstriche in mcp.json muessen verdoppelt werden. Vorwaerts-Schraegstriche gehen auch auf Windows und sind weniger fehleranfaellig.",
+    "'uv' muss mit vollem Pfad dastehen, wenn es nicht im PATH von LM Studio liegt - der PATH einer GUI-Anwendung ist oft kuerzer als der im Terminal."
+  ],
+  "outcome": "solved",
+  "verweise": [],
+  "quelle": {},
+  "genutzt": 0,
+  "zuletzt_genutzt": null,
+  "pruefungen": [],
+  "erstellt": "2026-08-10T15:39:13",
+  "geaendert": "2026-08-10T15:39:13"
+}

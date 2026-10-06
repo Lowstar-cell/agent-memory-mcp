@@ -1,0 +1,18 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Laufzeitkram, der sich jederzeit neu erzeugen laesst
+data/index/embeddings.jsonl
+data/index/werkzeuge.json
+data/jobs/*.json
+data/verifications/*.json
+data/handoffs/*.json
+*.tmp
+*.lock
+
+# Eigene Eintraege bleiben ABSICHTLICH versioniert (data/records/*.json).
+# Sie sind der Bestand, nicht der Cache. Wer sie privat halten will,
+# nimmt hier data/records/ dazu.

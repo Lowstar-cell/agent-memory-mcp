@@ -1,0 +1,48 @@
+{
+  "id": "pb_20260810_153916_subagent_braucht_minuten_statt_sekunden",
+  "kind": "playbook",
+  "title": "Subagent braucht Minuten statt Sekunden",
+  "trigger": "Ein Auftrag an einen Subagenten laeuft in die Zeitueberschreitung oder eine einzelne Modellrunde dauert Minuten",
+  "tags": [
+    "subagent",
+    "lm-studio",
+    "vram",
+    "geschwindigkeit"
+  ],
+  "context": "Gemessen auf einer 7900 XTX mit 24 GB: Eine einzige Modellrunde dauerte 266 Sekunden, weil zwei Modelle gleichzeitig geladen waren und zusammen nicht in den Speicher passten. LM Studio rechnet dann einen Teil auf der CPU - von aussen sieht das nach nichts aus, es ist nur langsam.",
+  "steps": [
+    {
+      "do": "status() aufrufen - es warnt, wenn mehr als ein Sprachmodell geladen ist",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "In LM Studio das nicht benoetigte Modell entladen",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "subagent_modell in config.json auf ein kleines Modell setzen (ein 4B reicht: Subagenten lesen viel und denken wenig)",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "Erst danach subagent.timeout_sekunden erhoehen - meist ist es dann gar nicht noetig",
+      "cmd": null,
+      "why": null
+    }
+  ],
+  "verify": null,
+  "pitfalls": [
+    "'auto' nimmt das gerade laufende Chatmodell. Bei einem grossen Chatmodell erbt der Subagent dessen Langsamkeit.",
+    "Ein Auftrag braucht mindestens zwei Modellrunden (Werkzeug holen, dann antworten). Ein Zeitlimit unter der doppelten Rundendauer kann nie aufgehen."
+  ],
+  "outcome": "solved",
+  "verweise": [],
+  "quelle": {},
+  "genutzt": 0,
+  "zuletzt_genutzt": null,
+  "pruefungen": [],
+  "erstellt": "2026-08-10T15:39:16",
+  "geaendert": "2026-08-10T15:39:16"
+}

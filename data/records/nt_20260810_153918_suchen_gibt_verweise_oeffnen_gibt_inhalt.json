@@ -1,0 +1,51 @@
+{
+  "id": "nt_20260810_153918_suchen_gibt_verweise_oeffnen_gibt_inhalt",
+  "kind": "notiz",
+  "title": "Suchen gibt Verweise, Oeffnen gibt Inhalt",
+  "trigger": "Frage, warum recall() nur Kurzfassungen liefert oder wie man an den vollen Eintrag kommt",
+  "tags": [
+    "gedaechtnis",
+    "kontext",
+    "bedienung"
+  ],
+  "context": "Das ist der Leitgedanke des ganzen Servers. recall() gibt je Treffer eine Zeile zurueck - Kennung, Ausloeser, Trefferguete, zusammen etwa 40 Woerter. Erst open_record(id) holt den vollstaendigen Eintrag mit mehreren hundert Woertern. So kostet eine Suche fast nichts, und teuer wird nur, was wirklich gebraucht wird. Dasselbe gilt fuer skill_find, tool_find, agent_result und verify.",
+  "steps": [
+    {
+      "do": "recall('womit du nicht weiterkommst') - in ganzen Worten fragen, nicht in Stichworten",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "Aus der Trefferliste den passenden Ausloeser aussuchen",
+      "cmd": null,
+      "why": null
+    },
+    {
+      "do": "open_record(id) nur fuer diesen einen Treffer",
+      "cmd": null,
+      "why": null
+    }
+  ],
+  "verify": null,
+  "pitfalls": [
+    "Alle Treffer der Reihe nach zu oeffnen macht den Vorteil zunichte.",
+    "Findet recall() nichts, gibt es dazu nichts Gemerktes. Dann ohne arbeiten und das Ergebnis danach mit remember() ablegen."
+  ],
+  "outcome": "solved",
+  "verweise": [
+    {
+      "art": "passt_zu",
+      "ziel": "pb_20260810_153913_server_taucht_in_lm_studio_nicht_auf"
+    },
+    {
+      "art": "passt_zu",
+      "ziel": "pb_20260810_153916_subagent_braucht_minuten_statt_sekunden"
+    }
+  ],
+  "quelle": {},
+  "genutzt": 0,
+  "zuletzt_genutzt": null,
+  "pruefungen": [],
+  "erstellt": "2026-08-10T15:39:18",
+  "geaendert": "2026-08-10T15:39:18"
+}

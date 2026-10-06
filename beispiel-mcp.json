@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "agent-memory": {
+      "command": "C:/Users/DEIN-NAME/AppData/Local/Programs/Python/Python311/Scripts/uv.exe",
+      "args": [
+        "--directory",
+        "C:/Users/DEIN-NAME/MCP-Server/agent-memory-mcp",
+        "run",
+        "server.py"
+      ],
+      "env": {}
+    }
+  }
+}

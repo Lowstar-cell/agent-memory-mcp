@@ -1,0 +1,4 @@
+{
+  "//": "EIGENE Server-Vermerke - nur solche, die NICHT in .lmstudio/mcp.json stehen. Sie ergaenzen mcp.json; bei gleichem Namen gewinnt mcp.json. Das Gateway (tool_find/tool_call) startet auch diese, sie sind also keine blosse Notiz. Hierher zieht auch scripts/schlank.py die Server um, wenn du mcp.json auf einen Eintrag eindampfst - geloescht wird dabei nichts.",
+  "mcpServers": {}
+}

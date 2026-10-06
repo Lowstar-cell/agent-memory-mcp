@@ -1,0 +1,20 @@
+[project]
+name = "agent-memory-mcp"
+version = "3.0.0"
+description = "Ein MCP-Server als Support-System fuer lokale Modelle in LM Studio: Gedaechtnis, Skills, Subagenten, Smoke-Tests, Kontext-Uebergabe, Schleifen-Erkennung und ein Gateway zu allen anderen MCP-Servern"
+requires-python = ">=3.11"
+dependencies = [
+    # 1.x bewusst festgehalten (geprueft am 09.08.2026, PyPI-Stand: 2.0.0).
+    # In mcp 2.0 heisst FastMCP jetzt MCPServer unter mcp.server, und httpx
+    # wurde durch httpx2 ersetzt - beides bricht diesen Server sofort.
+    # Die 1.x-Reihe ist in Wartung, bekommt weiter Sicherheitskorrekturen
+    # und laeuft nachweislich mit LM Studio. Erst umstellen, wenn LM Studio
+    # die Protokollfassung 2026-07-28 wirklich braucht.
+    "mcp>=1.28,<2",
+    "httpx>=0.27",
+    "psutil>=5.9",
+    "pyyaml>=6.0",
+]
+
+[tool.uv]
+package = false
